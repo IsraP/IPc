@@ -1,0 +1,11 @@
+1. Na classe base, o metodo retorna exatamente o que
+foi descrito dentro da classe. Na classe derivada, que é
+filha de base, os métodos que eram virtuais na classe base
+foram sobrescritos pelos metodos da derivada.
+
+2. Um erro foi gerado.
+
+3. Não.
+
+4. Criar um metódo não virtual de nome C que não recebe
+parametros.

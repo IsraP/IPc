@@ -1,0 +1,246 @@
+#include <stdio.h>
+
+int verificaColuna(int matriz[3][3], int col)
+{
+    int aux[3];
+    for (int i = 0; i < 3; i++)
+    {
+        aux[i] = matriz[i][col];
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = i; j < 2; j++)
+        {
+            if (matriz[i][col] == aux[j + 1])
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+int verificaLinha(int matriz[3][3], int lin)
+{
+    int aux[3];
+    for (int i = 0; i < 3; i++)
+    {
+        aux[i] = matriz[lin][i];
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = i; j < 2; j++)
+        {
+            if (matriz[lin][i] == aux[j + 1])
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+int verificaSubMatriz(int matriz[3][3], int lin, int col)
+{
+    int aux[3];
+    int flag = 1;
+
+    for (int i = 0; i < 3; i++)
+    {
+        aux[i] = matriz[lin][i];
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = i; j < 2; j++)
+        {
+            if (matriz[lin][i] == aux[j + 1])
+            {
+                flag = 0;
+            }
+        }
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        aux[i] = matriz[i][col];
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = i; j < 2; j++)
+        {
+            if (matriz[i][col] == aux[j + 1])
+            {
+                flag = 0;
+            }
+        }
+    }
+
+    if (flag == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+int verificaColunas(int matriz[3][3])
+{
+    int aux[3];
+    for (int sla = 0; sla < 3; sla++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            aux[i] = matriz[i][sla];
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = i; j < 2; j++)
+            {
+                if (matriz[i][sla] == aux[j + 1])
+                {
+                    return 0;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
+int verificaLinhas(int matriz[3][3])
+{
+    int aux[3];
+    for (int sla = 0; sla < 3; sla++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            aux[i] = matriz[sla][i];
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = i; j < 2; j++)
+            {
+                if (matriz[sla][i] == aux[j + 1])
+                {
+                    return 0;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
+int verificaSubMatrizes(int matriz[3][3])
+{
+    int aux[3];
+    int flag = 1;
+    for (int sla = 0; sla < 3; sla++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            aux[i] = matriz[i][sla];
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = i; j < 2; j++)
+            {
+                if (matriz[i][sla] == aux[j + 1])
+                {
+                    flag = 0;
+                }
+            }
+        }
+    }
+
+    for (int sla = 0; sla < 3; sla++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            aux[i] = matriz[sla][i];
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = i; j < 2; j++)
+            {
+                if (matriz[sla][i] == aux[j + 1])
+                {
+                    flag = 0;
+                }
+            }
+        }
+    }
+
+    if (flag == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+int verificaSudoku(int matriz[3][3])
+{
+    int aux[3][3];
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+
+        }
+    }
+    int flag = 1;
+    for (int sla = 0; sla < 3; sla++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            aux[i] = matriz[i][sla];
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = i; j < 2; j++)
+            {
+                if (matriz[i][sla] == aux[j + 1])
+                {
+                    flag = 0;
+                }
+            }
+        }
+    }
+
+    for (int sla = 0; sla < 3; sla++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            aux[i] = matriz[sla][i];
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = i; j < 2; j++)
+            {
+                if (matriz[sla][i] == aux[j + 1])
+                {
+                    flag = 0;
+                }
+            }
+        }
+    }
+
+    if (flag == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+int main(void)
+{
+    int s1[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    printf("%d", verificaSubMatrizes(s1));
+
+    return 0;
+}

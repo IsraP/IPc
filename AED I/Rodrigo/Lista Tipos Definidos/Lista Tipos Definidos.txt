@@ -1,0 +1,1141 @@
+1.
+# include <stdio.h>
+# include <string.h>
+
+struct aluno {
+    int matricula, ano, semestre;
+    char nome[15], curso[30], email[30], telefone[15];
+};
+struct aluno a1, a2, *a3;
+
+int main(void){
+    a2.matricula = 693594;
+    a2.ano = 2020;
+    a2.semestre = 1;
+    strcpy(a2.nome, "Israel");
+    strcpy(a2.curso, "Ciencia da Computacao");
+    strcpy(a2.email, "israelperesol@gmail.com");
+    strcpy(a2.telefone, "(31) 99301-1475");
+
+    a1 = a2;
+    a3 = &a1;
+
+    printf("Nome: %s, Curso: %s, Matricula: %d, Email: %s, Telefone: %s, Ano de entrada: %d, Semestre de entrada: %do.\n", a1.nome, a1.curso,
+    a1.matricula, a1.email, a1.telefone, a1.ano, a1.semestre);
+    printf("Nome: %s, Curso: %s, Matricula: %d, Email: %s, Telefone: %s, Ano de entrada: %d, Semestre de entrada: %do.\n", a2.nome, a2.curso,
+    a2.matricula, a2.email, a2.telefone, a2.ano, a2.semestre);
+    printf("Nome: %s, Curso: %s, Matricula: %d, Email: %s, Telefone: %s, Ano de entrada: %d, Semestre de entrada: %do.\n", (*a3).nome, (*a3).curso,
+    (*a3).matricula, (*a3).email, (*a3).telefone, (*a3).ano, (*a3).semestre);
+
+    return 0;
+}
+
+2.
+# include <stdio.h>
+
+int main(void){
+    struct cliente {
+        int numero;
+        char nome[15], CPF[15], email[30], telefone[15], rua[15], complemento[15], bairro[15], cidade[15], estado[2], CEP[10];
+    };
+
+    struct cliente c1;
+    printf("Digite o seu nome: ");
+    fgets(c1.nome, 100, stdin);
+    printf("Digite o seu CPF: ");
+    fgets(c1.CPF, 100, stdin);
+    printf("Digite o seu email: ");
+    fgets(c1.email, 100, stdin);
+    printf("Digite o seu telefone: ");
+    fgets(c1.telefone, 100, stdin);
+    printf("Digite a sua rua: ");
+    fgets(c1.rua, 100, stdin);
+    printf("Digite o seu complemento: ");
+    fgets(c1.complemento, 100, stdin);
+    printf("Digite o seu numero: ");
+    scanf("%d", &c1.numero);
+    fflush(stdin);
+    printf("Digite o seu bairro: ");
+    fgets(c1.bairro, 100, stdin);
+    printf("Digite a sua cidade: ");
+    fgets(c1.cidade, 100, stdin);
+    printf("Digite o seu estado: ");
+    fgets(c1.estado, 100, stdin);
+    printf("Digite o seu CEP: ");
+    fgets(c1.CEP, 100, stdin);
+
+    printf("%s, %s, %s, %s, %s, %s, %d, %s, %s, %s, %s", c1.nome, c1.CPF, c1.email, c1.telefone, c1.rua, c1.complemento, c1.numero, c1.bairro, 
+    c1.cidade, c1.estado, c1.CEP);
+
+    return 0;
+}
+
+3.
+# include <stdio.h>
+
+struct cliente {
+        int numero;
+        char nome[15], CPF[15], email[30], telefone[15], rua[15], complemento[15], bairro[15], cidade[15], estado[2], CEP[10];
+    };
+    struct cliente cli[100];
+    int n;
+
+void leCliente(), printCliente();
+
+int main(void){
+    printf("Digite a quantidade de clientes a serem lidos: ");
+    scanf("%d", &n);
+    leCliente(cli);
+    return 0;
+}
+
+void leCliente(struct cliente *c1){
+    for(int i = 0; i < n; i++){
+        
+        printf("%d", n);
+        fflush(stdin);
+        printf("Digite o seu nome: ");
+        fgets(c1[i].nome, 100, stdin);
+        printf("Digite o seu CPF: ");
+        fgets(c1[i].CPF, 100, stdin);
+        printf("Digite o seu email: ");
+        fgets(c1[i].email, 100, stdin);
+        printf("Digite o seu telefone: ");
+        fgets(c1[i].telefone, 100, stdin);
+        printf("Digite a sua rua: ");
+        fgets(c1[i].rua, 100, stdin);
+        printf("Digite o seu complemento: ");
+        fgets(c1[i].complemento, 100, stdin);
+        printf("Digite o seu numero: ");
+        scanf("%d", &c1[i].numero);
+        fflush(stdin);
+        printf("Digite o seu bairro: ");
+        fgets(c1[i].bairro, 100, stdin);
+        printf("Digite a sua cidade: ");
+        fgets(c1[i].cidade, 100, stdin);
+        printf("Digite o seu estado: ");
+        fgets(c1[i].estado, 100, stdin);
+        printf("Digite o seu CEP: ");
+        fgets(c1[i].CEP, 100, stdin);
+    }
+    
+
+    printCliente(c1);
+}
+
+void printCliente(struct cliente *c1){
+    for(int i = 0; i < n; i++){
+        fputs(c1[i].nome, stdout);
+        fputs(c1[i].CPF, stdout);
+        fputs(c1[i].email, stdout);
+        fputs(c1[i].telefone, stdout);
+        fputs(c1[i].rua, stdout);
+        fputs(c1[i].complemento, stdout);
+        printf("%d\n", c1[i].numero, stdout);
+        fputs(c1[i].cidade, stdout);
+        fputs(c1[i].estado, stdout);
+        fputs(c1[i].CEP, stdout);
+    }
+}
+
+4.
+# include <stdio.h>
+
+struct cliente {
+        int numero;
+        char nome[15], email[30], telefone[15];
+        struct endereco{
+            char CPF[15], rua[15], complemento[15], bairro[15], cidade[15], estado[2], CEP[10];
+        }endereco;
+    } cliente;
+    struct cliente cli[100];
+    int n;
+
+void leCliente(), printCliente();
+
+int main(void){
+    printf("Digite a quantidade de clientes a serem lidos: ");
+    scanf("%d", &n);
+    leCliente(cli);
+    return 0;
+}
+
+void leCliente(struct cliente *c1){
+    for(int i = 0; i < n; i++){
+        fflush(stdin);
+        printf("Digite o seu nome: ");
+        fgets(c1[i].nome, 100, stdin);
+        printf("Digite o seu CPF: ");
+        fgets(c1[i].endereco.CPF, 100, stdin);
+        printf("Digite o seu email: ");
+        fgets(c1[i].email, 100, stdin);
+        printf("Digite o seu telefone: ");
+        fgets(c1[i].telefone, 100, stdin);
+        printf("Digite a sua rua: ");
+        fgets(c1[i].endereco.rua, 100, stdin);
+        printf("Digite o seu complemento: ");
+        fgets(c1[i].endereco.complemento, 100, stdin);
+        printf("Digite o seu numero: ");
+        scanf("%d", &c1[i].numero);
+        fflush(stdin);
+        printf("Digite o seu bairro: ");
+        fgets(c1[i].endereco.bairro, 100, stdin);
+        printf("Digite a sua cidade: ");
+        fgets(c1[i].endereco.cidade, 100, stdin);
+        printf("Digite o seu estado: ");
+        fgets(c1[i].endereco.estado, 100, stdin);
+        printf("Digite o seu CEP: ");
+        fgets(c1[i].endereco.CEP, 100, stdin);
+    }
+    
+
+    printCliente(c1);
+}
+
+void printCliente(struct cliente *c1){
+    for(int i = 0; i < n; i++){
+        fputs(c1[i].nome, stdout);
+        fputs(c1[i].endereco.CPF, stdout);
+        fputs(c1[i].email, stdout);
+        fputs(c1[i].telefone, stdout);
+        fputs(c1[i].endereco.rua, stdout);
+        fputs(c1[i].endereco.complemento, stdout);
+        printf("%d\n", c1[i].numero, stdout);
+        fputs(c1[i].endereco.cidade, stdout);
+        fputs(c1[i].endereco.estado, stdout);
+        fputs(c1[i].endereco.CEP, stdout);
+    }
+}
+
+5.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+
+struct automovel{
+    char marca[20], modelo[20], chassi[20], renavam[20], cor[20];
+    int potencia, portas, capacidade;
+};
+
+struct automovel aX[10];
+
+void readData(struct automovel *a), printData(struct automovel *a), sortDataAL(struct automovel *a),
+ sortDataAM(struct automovel *a);
+
+int main(void){
+    readData(aX);
+    return 0;
+}
+
+void readData(struct automovel *a){
+    for(int i = 0; i < 10; i++){
+        fflush(stdin);
+        printf("Digite a marca: ");
+        fgets(a[i].marca, 100, stdin);
+        printf("Digite o modelo: ");
+        fgets(a[i].modelo, 100, stdin);
+        printf("Digite o chassi: ");
+        fgets(a[i].chassi, 100, stdin);
+        printf("Digite o renavam: ");
+        fgets(a[i].renavam, 100, stdin);
+        printf("Digite a cor: ");
+        fgets(a[i].cor, 100, stdin);
+        fflush(stdin);
+        printf("Digite a potencia: ");
+        scanf("%d", &a[i].potencia);
+        printf("Digite a qtd de portas: ");
+        scanf("%d", &a[i].portas);
+        printf("Digite a capacidade: ");
+        scanf("%d", &a[i].capacidade);
+    }
+    sortDataAM(a);
+}
+
+void sortDataAM(struct automovel *a){
+    int sort = 0;
+    struct automovel aux;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 9; j++){
+            //printf("mod1 = %smod2 = %s", a[j].modelo, a[j+1].modelo);
+            if(strcmp(a[j].modelo, a[j+1].modelo) > 0){
+                aux = a[j+1];
+                a[j+1] = a[j];
+                a[j] = aux;
+            }
+        }
+    }
+    sortDataAL(a);
+}
+
+void sortDataAL(struct automovel *a){
+    printf("eiii");
+    int sort = 0;
+    struct automovel aux;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 9; j++){
+            //printf("mod1 = %smod2 = %s", a[j].modelo, a[j+1].modelo);
+            if(strcmp(a[j].marca, a[j+1].marca) > 0){
+                aux = a[j+1];
+                a[j+1] = a[j];
+                a[j] = aux;
+            }
+        }
+    }
+    printData(a);
+}
+
+void printData(struct automovel *a){
+    for(int i = 0; i < 10; i++){
+        fputs(a[i].marca, stdout);
+        fputs(a[i].modelo, stdout);
+        fputs(a[i].chassi, stdout);
+        fputs(a[i].renavam, stdout);
+        fputs(a[i].cor, stdout);
+        fflush(stdin);
+        printf("%d\n", a[i].potencia);
+        printf("%d\n", a[i].portas);
+        printf("%d\n", a[i].capacidade);
+    }
+}
+
+6.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+
+typedef struct b{
+    char marca[20], modelo[20], chassi[20], renavam[20], cor[20];
+    int potencia, portas, capacidade;
+} automovel;
+
+automovel * aX;
+
+void readData(automovel *a), printData(automovel *a), sortDataAL(automovel *a), sortDataAM(automovel *a);
+
+int main(void){
+    aX = (automovel*) calloc(10, sizeof(automovel));
+    readData(aX);
+    free(aX);
+    return 0;
+}
+
+void readData(automovel *a){
+    for(int i = 0; i < 10; i++){
+        fflush(stdin);
+        printf("Digite a marca: ");
+        fgets(a[i].marca, 100, stdin);
+        printf("Digite o modelo: ");
+        fgets(a[i].modelo, 100, stdin);
+        printf("Digite o chassi: ");
+        fgets(a[i].chassi, 100, stdin);
+        printf("Digite o renavam: ");
+        fgets(a[i].renavam, 100, stdin);
+        printf("Digite a cor: ");
+        fgets(a[i].cor, 100, stdin);
+        fflush(stdin);
+        printf("Digite a potencia: ");
+        scanf("%d", &a[i].potencia);
+        printf("Digite a qtd de portas: ");
+        scanf("%d", &a[i].portas);
+        printf("Digite a capacidade: ");
+        scanf("%d", &a[i].capacidade);
+    }
+    sortDataAM(a);
+}
+
+void sortDataAM(automovel *a){
+    int sort = 0;
+    automovel aux;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 9; j++){
+            //printf("mod1 = %smod2 = %s", a[j].modelo, a[j+1].modelo);
+            if(strcmp(a[j].modelo, a[j+1].modelo) > 0){
+                aux = a[j+1];
+                a[j+1] = a[j];
+                a[j] = aux;
+            }
+        }
+    }
+    sortDataAL(a);
+}
+
+void sortDataAL(automovel *a){
+    printf("eiii");
+    int sort = 0;
+    automovel aux;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 9; j++){
+            //printf("mod1 = %smod2 = %s", a[j].modelo, a[j+1].modelo);
+            if(strcmp(a[j].marca, a[j+1].marca) > 0){
+                aux = a[j+1];
+                a[j+1] = a[j];
+                a[j] = aux;
+            }
+        }
+    }
+    printData(a);
+}
+
+void printData(automovel *a){
+    for(int i = 0; i < 10; i++){
+        fputs(a[i].marca, stdout);
+        fputs(a[i].modelo, stdout);
+        fputs(a[i].chassi, stdout);
+        fputs(a[i].renavam, stdout);
+        fputs(a[i].cor, stdout);
+        fflush(stdin);
+        printf("%d\n", a[i].potencia);
+        printf("%d\n", a[i].portas);
+        printf("%d\n", a[i].capacidade);
+    }
+}
+
+7-1.
+# include <stdio.h>
+# include <string.h>
+
+typedef struct a {
+    int matricula, ano, semestre;
+    char nome[15], curso[30], email[30], telefone[15];
+} aluno;
+aluno a1, a2, *a3;
+
+int main(void){
+    a2.matricula = 693594;
+    a2.ano = 2020;
+    a2.semestre = 1;
+    strcpy(a2.nome, "Israel");
+    strcpy(a2.curso, "Ciencia da Computacao");
+    strcpy(a2.email, "israelperesol@gmail.com");
+    strcpy(a2.telefone, "(31) 99301-1475");
+
+    a1 = a2;
+    a3 = &a1;
+
+    printf("Nome: %s, Curso: %s, Matricula: %d, Email: %s, Telefone: %s, Ano de entrada: %d, Semestre de entrada: %do.\n", a1.nome, a1.curso,
+    a1.matricula, a1.email, a1.telefone, a1.ano, a1.semestre);
+    printf("Nome: %s, Curso: %s, Matricula: %d, Email: %s, Telefone: %s, Ano de entrada: %d, Semestre de entrada: %do.\n", a2.nome, a2.curso,
+    a2.matricula, a2.email, a2.telefone, a2.ano, a2.semestre);
+    printf("Nome: %s, Curso: %s, Matricula: %d, Email: %s, Telefone: %s, Ano de entrada: %d, Semestre de entrada: %do.\n", (*a3).nome, (*a3).curso,
+    (*a3).matricula, (*a3).email, (*a3).telefone, (*a3).ano, (*a3).semestre);
+
+    return 0;
+}
+
+7-2.
+# include <stdio.h>
+
+int main(void){
+    typedef struct c {
+        int numero;
+        char nome[15], CPF[15], email[30], telefone[15], rua[15], complemento[15], bairro[15], cidade[15], estado[2], CEP[10];
+    } cliente;
+
+    cliente c1;
+    printf("Digite o seu nome: ");
+    fgets(c1.nome, 100, stdin);
+    printf("Digite o seu CPF: ");
+    fgets(c1.CPF, 100, stdin);
+    printf("Digite o seu email: ");
+    fgets(c1.email, 100, stdin);
+    printf("Digite o seu telefone: ");
+    fgets(c1.telefone, 100, stdin);
+    printf("Digite a sua rua: ");
+    fgets(c1.rua, 100, stdin);
+    printf("Digite o seu complemento: ");
+    fgets(c1.complemento, 100, stdin);
+    printf("Digite o seu numero: ");
+    scanf("%d", &c1.numero);
+    fflush(stdin);
+    printf("Digite o seu bairro: ");
+    fgets(c1.bairro, 100, stdin);
+    printf("Digite a sua cidade: ");
+    fgets(c1.cidade, 100, stdin);
+    printf("Digite o seu estado: ");
+    fgets(c1.estado, 100, stdin);
+    printf("Digite o seu CEP: ");
+    fgets(c1.CEP, 100, stdin);
+
+    printf("%s, %s, %s, %s, %s, %s, %d, %s, %s, %s, %s", c1.nome, c1.CPF, c1.email, c1.telefone, c1.rua, c1.complemento, c1.numero, c1.bairro, 
+    c1.cidade, c1.estado, c1.CEP);
+
+    return 0;
+}
+
+7-3.
+# include <stdio.h>
+
+typedef struct c {
+        int numero;
+        char nome[15], CPF[15], email[30], telefone[15], rua[15], complemento[15], bairro[15], cidade[15], estado[2], CEP[10];
+    } cliente;
+    cliente cli[100];
+    int n;
+
+void leCliente(), printCliente();
+
+int main(void){
+    printf("Digite a quantidade de clientes a serem lidos: ");
+    scanf("%d", &n);
+    leCliente(cli);
+    return 0;
+}
+
+void leCliente(cliente *c1){
+    for(int i = 0; i < n; i++){
+        
+        printf("%d", n);
+        fflush(stdin);
+        printf("Digite o seu nome: ");
+        fgets(c1[i].nome, 100, stdin);
+        printf("Digite o seu CPF: ");
+        fgets(c1[i].CPF, 100, stdin);
+        printf("Digite o seu email: ");
+        fgets(c1[i].email, 100, stdin);
+        printf("Digite o seu telefone: ");
+        fgets(c1[i].telefone, 100, stdin);
+        printf("Digite a sua rua: ");
+        fgets(c1[i].rua, 100, stdin);
+        printf("Digite o seu complemento: ");
+        fgets(c1[i].complemento, 100, stdin);
+        printf("Digite o seu numero: ");
+        scanf("%d", &c1[i].numero);
+        fflush(stdin);
+        printf("Digite o seu bairro: ");
+        fgets(c1[i].bairro, 100, stdin);
+        printf("Digite a sua cidade: ");
+        fgets(c1[i].cidade, 100, stdin);
+        printf("Digite o seu estado: ");
+        fgets(c1[i].estado, 100, stdin);
+        printf("Digite o seu CEP: ");
+        fgets(c1[i].CEP, 100, stdin);
+    }
+    
+
+    printCliente(c1);
+}
+
+void printCliente(cliente *c1){
+    for(int i = 0; i < n; i++){
+        fputs(c1[i].nome, stdout);
+        fputs(c1[i].CPF, stdout);
+        fputs(c1[i].email, stdout);
+        fputs(c1[i].telefone, stdout);
+        fputs(c1[i].rua, stdout);
+        fputs(c1[i].complemento, stdout);
+        printf("%d\n", c1[i].numero, stdout);
+        fputs(c1[i].cidade, stdout);
+        fputs(c1[i].estado, stdout);
+        fputs(c1[i].CEP, stdout);
+    }
+}
+
+7-4.
+# include <stdio.h>
+
+typedef struct c {
+        int numero;
+        char nome[15], email[30], telefone[15];
+        struct endereco{
+            char CPF[15], rua[15], complemento[15], bairro[15], cidade[15], estado[2], CEP[10];
+        }endereco;
+    } cliente;
+    cliente cli[100];
+    int n;
+
+void leCliente(), printCliente();
+
+int main(void){
+    printf("Digite a quantidade de clientes a serem lidos: ");
+    scanf("%d", &n);
+    leCliente(cli);
+    return 0;
+}
+
+void leCliente(cliente *c1){
+    for(int i = 0; i < n; i++){
+        fflush(stdin);
+        printf("Digite o seu nome: ");
+        fgets(c1[i].nome, 100, stdin);
+        printf("Digite o seu CPF: ");
+        fgets(c1[i].endereco.CPF, 100, stdin);
+        printf("Digite o seu email: ");
+        fgets(c1[i].email, 100, stdin);
+        printf("Digite o seu telefone: ");
+        fgets(c1[i].telefone, 100, stdin);
+        printf("Digite a sua rua: ");
+        fgets(c1[i].endereco.rua, 100, stdin);
+        printf("Digite o seu complemento: ");
+        fgets(c1[i].endereco.complemento, 100, stdin);
+        printf("Digite o seu numero: ");
+        scanf("%d", &c1[i].numero);
+        fflush(stdin);
+        printf("Digite o seu bairro: ");
+        fgets(c1[i].endereco.bairro, 100, stdin);
+        printf("Digite a sua cidade: ");
+        fgets(c1[i].endereco.cidade, 100, stdin);
+        printf("Digite o seu estado: ");
+        fgets(c1[i].endereco.estado, 100, stdin);
+        printf("Digite o seu CEP: ");
+        fgets(c1[i].endereco.CEP, 100, stdin);
+    }
+    
+
+    printCliente(c1);
+}
+
+void printCliente(cliente *c1){
+    for(int i = 0; i < n; i++){
+        fputs(c1[i].nome, stdout);
+        fputs(c1[i].endereco.CPF, stdout);
+        fputs(c1[i].email, stdout);
+        fputs(c1[i].telefone, stdout);
+        fputs(c1[i].endereco.rua, stdout);
+        fputs(c1[i].endereco.complemento, stdout);
+        printf("%d\n", c1[i].numero, stdout);
+        fputs(c1[i].endereco.cidade, stdout);
+        fputs(c1[i].endereco.estado, stdout);
+        fputs(c1[i].endereco.CEP, stdout);
+    }
+}
+
+7-5.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+
+typedef struct b{
+    char marca[20], modelo[20], chassi[20], renavam[20], cor[20];
+    int potencia, portas, capacidade;
+} automovel;
+
+automovel * aX;
+
+void readData(automovel *a), printData(automovel *a), sortDataAL(automovel *a), sortDataAM(automovel *a);
+
+int main(void){
+    aX = (automovel*) calloc(10, sizeof(automovel));
+    readData(aX);
+    free(aX);
+    return 0;
+}
+
+void readData(automovel *a){
+    for(int i = 0; i < 10; i++){
+        fflush(stdin);
+        printf("Digite a marca: ");
+        fgets(a[i].marca, 100, stdin);
+        printf("Digite o modelo: ");
+        fgets(a[i].modelo, 100, stdin);
+        printf("Digite o chassi: ");
+        fgets(a[i].chassi, 100, stdin);
+        printf("Digite o renavam: ");
+        fgets(a[i].renavam, 100, stdin);
+        printf("Digite a cor: ");
+        fgets(a[i].cor, 100, stdin);
+        fflush(stdin);
+        printf("Digite a potencia: ");
+        scanf("%d", &a[i].potencia);
+        printf("Digite a qtd de portas: ");
+        scanf("%d", &a[i].portas);
+        printf("Digite a capacidade: ");
+        scanf("%d", &a[i].capacidade);
+    }
+    sortDataAM(a);
+}
+
+void sortDataAM(automovel *a){
+    int sort = 0;
+    automovel aux;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 9; j++){
+            //printf("mod1 = %smod2 = %s", a[j].modelo, a[j+1].modelo);
+            if(strcmp(a[j].modelo, a[j+1].modelo) > 0){
+                aux = a[j+1];
+                a[j+1] = a[j];
+                a[j] = aux;
+            }
+        }
+    }
+    sortDataAL(a);
+}
+
+void sortDataAL(automovel *a){
+    printf("eiii");
+    int sort = 0;
+    automovel aux;
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 9; j++){
+            //printf("mod1 = %smod2 = %s", a[j].modelo, a[j+1].modelo);
+            if(strcmp(a[j].marca, a[j+1].marca) > 0){
+                aux = a[j+1];
+                a[j+1] = a[j];
+                a[j] = aux;
+            }
+        }
+    }
+    printData(a);
+}
+
+void printData(automovel *a){
+    for(int i = 0; i < 10; i++){
+        fputs(a[i].marca, stdout);
+        fputs(a[i].modelo, stdout);
+        fputs(a[i].chassi, stdout);
+        fputs(a[i].renavam, stdout);
+        fputs(a[i].cor, stdout);
+        fflush(stdin);
+        printf("%d\n", a[i].potencia);
+        printf("%d\n", a[i].portas);
+        printf("%d\n", a[i].capacidade);
+    }
+}
+
+8-1.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+typedef struct p{
+    char nome[15], endereco[100];
+    int idade;
+} pessoa;
+pessoa * p1;
+
+void leDados(pessoa *p), printDados(pessoa *p);
+
+int main(void){
+    p1 = (pessoa*) calloc(1, sizeof(pessoa));
+    leDados(p1);
+    return 0;
+}
+
+void leDados(pessoa *p){
+    printf("Digite o seu nome: ");
+    fgets(p->nome, 16, stdin);
+    printf("Digite a sua idade: ");
+    scanf("%d", &p->idade);
+    fflush(stdin);
+    printf("Digite o seu endereco: ");
+    fgets(p->endereco, 100, stdin);
+
+    printDados(p);
+}
+
+void printDados(pessoa * p){
+    fputs(p->nome, stdout);
+    printf("%d\n", p->idade);
+    fputs(p->endereco, stdout);
+    
+}
+
+8-2.
+# include <stdio.h>
+# include <math.h>
+
+typedef struct xy {
+    int x, y;
+} coords;
+
+coords p1;
+
+int main(void){
+    printf("Digite o valor do X: ");
+    scanf("%d", &p1.x);
+    printf("Digite o valor do Y: ");
+    scanf("%d", &p1.y);
+
+    float distancia = sqrt(pow(p1.x, 2) + pow(p1.y, 2));
+
+    printf("A distancia entre dois pontos e de %f", distancia);
+
+    return 0;
+}
+
+8-3.
+# include <stdio.h>
+# include <math.h>
+
+typedef struct xy {
+    int x, y;
+} coords;
+
+coords p[2];
+
+int main(void){
+    for(int i = 0; i < 2; i++){
+
+    printf("Digite o valor do X: ");
+    scanf("%d", &p[i].x);
+    printf("Digite o valor do Y: ");
+    scanf("%d", &p[i].y);
+
+    }
+
+    float distancia = sqrt(pow((p[1].x - p[0].x), 2) + pow((p[1].y - p[0].y), 2));
+
+    printf("A distancia entre dois pontos e de %f", distancia);
+
+    return 0;
+}
+
+8-4.
+# include <stdio.h>
+# include <math.h>
+
+typedef struct r{
+    struct ponto{
+        int x, y;
+    } p1, p2;
+} retangulo;
+
+retangulo ret1;
+
+int main(void){
+        printf("Digite o valor do X1: ");
+        scanf("%d", &ret1.p1.x);
+        printf("Digite o valor do Y1: ");
+        scanf("%d", &ret1.p1.y);
+        printf("Digite o valor do X2: ");
+        scanf("%d", &ret1.p2.x);
+        printf("Digite o valor do Y2: ");
+        scanf("%d", &ret1.p2.y);
+
+    float diagonal = sqrt(pow((ret1.p2.x - ret1.p1.x), 2) + pow((ret1.p2.y - ret1.p1.y), 2));
+    int area = (ret1.p1.x - ret1.p2.x) * (ret1.p1.y - ret1.p2.y);
+
+    printf("A diagonal vale %f\n", diagonal);
+    printf("A area do retangulo vale %d", area);
+
+    return 0;
+}
+
+8-5.
+# include <stdio.h>
+# include <math.h>
+
+typedef struct r{
+    struct ponto{
+        int x, y;
+    } p1, p2, p3;
+} retangulo;
+
+retangulo ret1;
+
+int main(void){
+    int *x1, *x2, *x3, *y1, *y2, *y3;
+
+    printf("Digite o valor do X1: ");
+    scanf("%d", &ret1.p1.x);
+    printf("Digite o valor do Y1: ");
+    scanf("%d", &ret1.p1.y);
+    printf("Digite o valor do X2: ");
+    scanf("%d", &ret1.p2.x);
+    printf("Digite o valor do Y2: ");
+    scanf("%d", &ret1.p2.y);
+    printf("Digite o valor do X3: ");
+    scanf("%d", &ret1.p3.x);
+    printf("Digite o valor do Y3: ");
+    scanf("%d", &ret1.p3.y);
+
+    x1 = &ret1.p1.x;
+    x2 = &ret1.p2.x;
+    x3 = &ret1.p3.x;
+    y1 = &ret1.p1.y;
+    y2 = &ret1.p2.y;
+    y3 = &ret1.p3.y;
+
+    if((*x3 >= *x1 && *x3 <= *x2) && (*y3 >= *y1 && *y3 <= *y2)){
+        printf("Dentro do retangulo.");
+    }
+    else{
+        printf("Fora do retangulo.");
+    }
+
+    return 0;
+}
+
+8-6.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+int leDados();
+void printBest(int aluno);
+
+typedef struct a{
+    char nome[15];
+    int matricula, provas[3];
+    float media;
+} aluno;
+
+aluno * turma;
+
+int main(void){
+    turma = (aluno*) calloc(5, sizeof(aluno));
+    printBest(leDados());
+    free(turma);
+    return 0;
+}
+
+int leDados(){
+    int maior = 0;
+    int aluno;
+    for (int i = 0; i < 5; i++){
+        fflush(stdin);
+        printf("Digite seu nome: ");
+        fgets(turma[i].nome, 16, stdin);
+        printf("Digite sua matricula: ");
+        scanf("%d", &turma[i].matricula);
+
+        for (int j = 0; j < 3; j++){
+            printf("Digite a nota da %da prova: ", j+1);
+            scanf("%d", &turma[i].provas[j]);
+            turma[i].media += turma[i].provas[j];
+        }
+
+        turma[i].media = (float) turma[i].media / 3;
+
+        if (turma[i].media > maior){
+            maior = turma[i].media;
+            aluno = i;
+        }
+    }
+
+    return aluno;
+}
+
+void printBest(int aluno){
+    fputs(turma[aluno].nome, stdout);
+    for(int i = 0; i < 3; i++){
+        printf("%d ", turma[aluno].provas[i]);
+    }
+}
+
+8-7.
+# include <stdio.h>
+# include <stdlib.h>
+
+typedef struct hms{
+    int horas, minutos, segundos;
+} time;
+
+time maior = {0, 0, 0}, * horas;
+
+int main(void){
+    horas = (time *) calloc(5, sizeof(time));
+
+    for (int i = 0; i < 5; i++){
+        printf("Digite a hora: ");
+        scanf("%d", &horas[i].horas);
+        printf("Digite o minuto: ");
+        scanf("%d", &horas[i].minutos);
+        printf("Digite o segundo: ");
+        scanf("%d", &horas[i].segundos);
+    }
+
+    for (int i = 0; i < 5; i++){
+        if(horas[i].horas > maior.horas)
+            maior = horas[i];
+        else if(horas[i].horas == maior.horas){
+            if(horas[i].minutos > maior.minutos)
+                maior = horas[i];
+            else if(horas[i].minutos == maior.minutos){
+                if(horas[i].segundos > maior.segundos)
+                maior = horas[i];
+            }
+        }
+    }
+
+    for (int i = 0; i < 5; i++){
+        printf("%da Hora - %d:%d:%d\n", i, horas[i].horas, horas[i].minutos, horas[i].segundos);
+    }
+
+    printf("Maior: %d:%d:%d", maior.horas, maior.minutos, maior.segundos);
+
+
+    free(horas);
+    return 0;
+}
+
+8-8.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+typedef struct p{
+    char nome[15];
+    int idade;
+} pessoa;
+
+pessoa maior = {"claudio", 0}, menor = {"Clovis", 10000}, * pessoas;
+
+
+int main(void){
+    pessoas = (pessoa *) calloc(6, sizeof(pessoa));
+    for(int i = 0; i < 6; i++){
+        fflush(stdin);
+        printf("Digite seu nome: ");
+        gets(pessoas[i].nome);
+        printf("Digite sua idade: ");
+        scanf("%d", &pessoas[i].idade);
+        if (pessoas[i].idade > maior.idade)
+            maior = pessoas[i];
+        if(pessoas[i].idade < menor.idade)
+            menor = pessoas[i];
+    }
+
+    printf("%s %d\n", maior.nome, maior.idade);
+    printf("%s %d", menor.nome, menor.idade);
+
+    free(pessoas);
+    return 0;
+}
+
+8-9.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+typedef struct a{
+   char nome[15], esporte[15];
+   float altura;
+   int idade;  
+} atleta;
+
+atleta alto = {"aa", "aa", 0, 0}, velho = {"aa", "aa", 0, 0}, * atletas;
+
+int main(void){
+    atletas = (atleta *) calloc(5, sizeof(atleta));
+    for (int i = 0; i < 5; i++){
+        fflush(stdin);
+        printf("Digite seu nome: ");
+        gets(atletas[i].nome);
+        printf("Digite seu esporte: ");
+        gets(atletas[i].esporte);
+        fflush(stdin);
+        printf("Digite sua altura: ");
+        scanf("%f", &atletas[i].altura);
+        if(atletas[i].altura > alto.altura){
+            alto = atletas[i];
+        }
+        printf("Digite sua idade: ");
+        scanf("%d", &atletas[i].idade);
+        if(atletas[i].idade > velho.altura){
+            velho = atletas[i];
+        }
+    }
+
+    printf("Mais alto: %s\nMais velho: %s.\n", alto.nome, velho.nome);
+
+    free(atletas);
+    return 0;
+}
+
+8-10.
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+typedef struct a{
+   char nome[15], esporte[15];
+   float altura;
+   int idade;  
+} atleta;
+
+atleta alto = {"aa", "aa", 0, 0}, velho = {"aa", "aa", 0, 0}, * atletas;
+
+int main(void){
+    atleta aux;
+    atletas = (atleta *) calloc(5, sizeof(atleta));
+
+    for (int i = 0; i < 5; i++){
+        fflush(stdin);
+        printf("Digite seu nome: ");
+        gets(atletas[i].nome);
+        printf("Digite seu esporte: ");
+        gets(atletas[i].esporte);
+        fflush(stdin);
+        printf("Digite sua altura: ");
+        scanf("%f", &atletas[i].altura);
+        printf("Digite sua idade: ");
+        scanf("%d", &atletas[i].idade);
+    }
+
+    for (int i = 0; i < 5; i++){
+        for(int j = 0; j < 4; j++){
+            if (atletas[j].idade < atletas[j+1].idade){
+                aux = atletas[j];
+                atletas[j] = atletas[j+1];
+                atletas[j+1] = aux;
+            }
+        }
+    }
+
+    for (int i = 0; i < 5; i++){
+        printf("Nome: %s, Esporte: %s, Altura: %f, Idade: %d\n", atletas[i].nome, atletas[i].esporte, atletas[i].altura, atletas[i].idade);
+    }
+
+    free(atletas);
+    return 0;
+}
+
+8-11.
+# include <stdio.h>
+# include <stdlib.h>
+
+typedef struct dt {
+    int dia, mes, ano;
+} data;
+data *d;
+void lerDatas(), calcularDias();
+
+int main(void){
+    d = (data *) calloc(2, sizeof(data));
+
+    lerDatas();
+    calcularDias();
+
+    free(d);
+    return 0;
+}
+
+void lerDatas() {
+    for (int i = 0; i < 2; i++){
+        printf("Digite o dia: ");
+        scanf("%d", &d[i].dia);
+        printf("Digite o mes: ");
+        scanf("%d", &d[i].mes);
+        printf("Digite o ano: ");
+        scanf("%d", &d[i].ano);
+    }    
+}
+
+void calcularDias() {
+    int aux, dias = 0;
+    if (d[1].ano > d[0].ano){
+        aux = d[1].ano - d[0].ano;
+        dias += aux*365;
+    }
+    if (d[1].mes > d[0].mes){
+        aux = d[1].mes - d[0].mes;
+        dias += aux*30;
+    }
+    else if(d[1].mes < d[0].mes){
+            aux = d[0].mes - d[1].mes;
+            dias -= aux*30;
+    }
+    if(d[1].dia > d[0].dia){
+        aux = d[1].dia - d[0].dia;
+        dias += aux;
+    }
+    else if(d[1].dia < d[0].dia){
+        aux = d[0].dia - d[1].dia;
+        dias -= aux;
+    }
+    
+    printf("Dias de dif = %d", dias);
+}
