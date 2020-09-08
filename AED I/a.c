@@ -1,21 +1,16 @@
-# include <stdio.h>
+#include <stdio.h>
 
-
-
-
+int doidao(char n){
+    int resp = 0;
+    int v = (int) n;
+    if (v == 65 || v == 69 || v == 73 || v == 79 || v == 85 || v == 97 || v == 101 || v == 105 ||
+        v == 111 || v == 117)
+    {
+        resp = 1;
+    }
+    return resp;
+}
 
 int main(void){
-    int TAM = 5;
-    int A[5] = {1, 2, 3, 4, 5};
-    float aux;
-    for(int i=0;i<TAM/2; i++) {
-        aux=A[i];
-        A[i]=A[TAM-1-i];
-        A[TAM-1-i]=aux;
+    printf("%d", doidao('f'));
 }
-    for(int i = 0; i < TAM; i++){
-        printf("%d ", A[i]);
-    }
-}
-
-
